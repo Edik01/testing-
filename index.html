@@ -14,25 +14,35 @@
         <input type="email" id="email" name="email"><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br><br>
-        <button type="submit">Sign In</button>
+        <button type="submit" id="loginButton">Sign In</button>
     </form>
 
     <script>
-        <script>
-            document.getElementById("loginForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent the form from submitting
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
 
-            // Get the values of email and password fields
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
 
-            // Just for demonstration, you can replace this with your own logic
-            // Here, we are just logging the values to the console
-            console.log("Email:", email);
-            console.log("Password:", password);
-    });
-    </script>
-
+            // Отправляем POST-запрос на сервер
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'email': email,
+                    'password': password
+                }),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Ответ от сервера
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
     </script>
 </body>
 
