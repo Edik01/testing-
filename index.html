@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Sign In</button>
+    </form>
+
+    <script>
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting
+
+            // Get the values of email and password fields
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Just for demonstration, you can replace this with your own logic
+            // Here, we are just logging the values to the console
+            console.log("Email:", email);
+            console.log("Password:", password);
+    });
+    </script>
+
+    </script>
+</body>
+
+</html>
