@@ -10,6 +10,7 @@ const connection = mysql.createConnection({
   user: "username",
   password: "password",
   database: "database_name",
+  connectTimeout: 20000, // Установите время ожидания подключения в миллисекундах
 });
 
 connection.connect((err) => {
@@ -25,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Обработчик GET запроса на главную страницу
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "project", "index.html"));
 });
 
 // Обработчик POST запроса на адрес "/login"
