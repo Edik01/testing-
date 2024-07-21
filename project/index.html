@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Подключаем файл стилей -->
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form id="loginForm" class="login-form"> <!-- Добавляем класс "login-form" -->
+        <label for="email" class="form-label">Email:</label><br>
+        <input type="email" id="email" name="email" class="form-input"><br> <!-- Добавляем класс "form-input" -->
+        <label for="password" class="form-label">Password:</label><br>
+        <input type="password" id="password" name="password" class="form-input"><br><br>
+        <!-- Добавляем класс "form-input" -->
+        <button type="submit" id="loginButton" class="form-button">Sign In</button>
+        <!-- Добавляем класс "form-button" -->
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Отправляем POST-запрос на сервер
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'email': email,
+                    'password': password
+                }),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Ответ от сервера
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
