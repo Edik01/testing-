@@ -34,6 +34,11 @@ app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  Обработчик POST запроса на адрес "/logo"
+app.post("/logo", (req, res) => {
+  const logo = req.body.email;
+
+
   // Демонстрационный вывод в консоль
   console.log("Received login request:");
   console.log("Email:", email);
